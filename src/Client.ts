@@ -1,16 +1,20 @@
-import { Route } from '.';
+import { DefaultOptions, Route } from '.';
 import { REST } from './REST';
 
 /**
  * Client to interact with Fugapedia API
  */
 export class Client {
-  public options: unknown;
+  public options: ClientOptions;
 
   #rest: REST = new REST();
 
-  constructor(options: unknown) {
-    this.options = options;
+  constructor(options?: ClientOptions) {
+    /**
+     * The options the client was instantiated with
+     * @type {ClientOptions}
+     */
+    this.options = { ...DefaultOptions, ...options };
   }
 
   /**
@@ -40,7 +44,7 @@ export class Client {
     id: string,
     options: { responseType?: ArticleResponseType, limit?: number } = {},
   ) {
-    const { responseType = ArticleResponseType.Text, limit } = options;
+    const { responseType = ArticleResponseType.Text, limit = this.options.articleSymbolsLimit } = options;
     const query = new URLSearchParams();
     query.append('article', id);
     query.append('type', responseType);
@@ -52,4 +56,8 @@ export class Client {
 export const enum ArticleResponseType {
   Text = '1',
   WikiMarkup = '2',
+}
+
+export interface ClientOptions {
+  articleSymbolsLimit?: number
 }
