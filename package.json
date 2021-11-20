@@ -1,0 +1,48 @@
+{
+  "name": "fugapedia.js",
+  "version": "0.0.0",
+  "description": "Node.js module to easily interact with Fugapedia API",
+  "main": "dist/index.js",
+  "module": "./dist/index.mjs",
+  "typings": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
+	"files": [
+		"dist"
+	],
+  "scripts": {
+    "build": "tsc && gen-esm-wrapper ./dist/index.js ./dist/index.mjs",
+    "lint": "eslint src/index.ts",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fugapediajs/fugapedia.js.git"
+  },
+  "author": "Synbulat Biishev <syjalo.dev@gmail.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "fugapedia",
+    "api",
+    "фугапедия"
+  ],
+  "bugs": {
+    "url": "https://github.com/fugapediajs/fugapedia.js/issues"
+  },
+  "homepage": "https://github.com/fugapediajs/fugapedia.js#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.9",
+    "@types/node-fetch": "^2.5.12",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "typescript": "^4.5.2"
+  }
+}
