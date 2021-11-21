@@ -29,15 +29,27 @@ const Fugapedia = require('fugapedia.js');
 
 const client = new Fugapedia.Client().setKey('myAPIKey');
 
-client.getArticle('Кирилл_Баранов', { limit: 100 });
-client.getImageURL('Syjalo', 'jpeg');
+const main = async () => {
+  const article = await client.getArticle('Кирилл_Баранов', { limit: 100 });
+  console.log(article);
+
+  const url = Fugapedia.makeImageUrl('Syjalo', 'jpeg');
+  console.log(url); 
+}
 ```
 ### TypeScript
 ```ts
-import { Client, AllowedImageFormats } from 'fugapedia.js';
+import { Client } from 'fugapedia.js';
+import { makeImageUrl } from './Util';
 
 const client = new Client().setKey('myAPIKey');
 
-client.getArticle('Кирилл_Баранов', { limit: 100 });
-client.getImageURL('Syjalo', AllowedImageFormats.JPEG);
+const main = async () => {
+  const article = await client.getArticle('Кирилл_Баранов', { limit: 100 });
+  console.log(article);
+
+  const url = makeImageUrl('Syjalo', 'jpeg');
+  console.log(url);
+}
+main();
 ```

@@ -1,11 +1,12 @@
 import { Client } from '.';
 import { RESTGetAPIArticleResponse } from 'fugapedia-api-types/v1';
+import { DefineHiddenProperty } from './Util';
 
 /**
  * An article on Fugapedia
  */
 export class Article {
-  public readonly client: Client
+  @DefineHiddenProperty public readonly client: Client
   public article: string
   public articleContent: string
 

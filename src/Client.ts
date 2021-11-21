@@ -1,7 +1,8 @@
 import { DefaultOptions } from '.';
 import { REST } from './REST';
-import { APIArticleResponseType, RESTGetAPIArticleResponse, RouteBases, Routes } from 'fugapedia-api-types/v1';
+import { APIArticleResponseType, RESTGetAPIArticleResponse, Routes } from 'fugapedia-api-types/v1';
 import { Article } from './Article';
+import { resolveQuery } from './Util';
 
 /**
  * Client to interact with Fugapedia API
@@ -47,33 +48,13 @@ export class Client {
     options: { responseType?: APIArticleResponseType, limit?: number } = {},
   ) {
     const { responseType = APIArticleResponseType.Text, limit = this.options.articleSymbolsLimit } = options;
-    const query = new URLSearchParams();
-    query.append('article', id);
-    query.append('type', responseType);
-    if (limit) query.append('limit', `${limit}`);
+    let query = resolveQuery({ article: id, type: responseType });
+    if (limit) query = resolveQuery({ limit }, query);
     const data = await this.#rest.get<RESTGetAPIArticleResponse>(Routes.article(), query);
     return new Article(this, data);
-  }
-
-  /**
-   * 
-   * @param {string} name Name of image
-   * @param {AllowedImageFormats} format Image format. Can be `png`, `jpg`, `jpeg` or `gif`
-   * @returns {string}
-   */
-  public getImageURL(name: string, format: AllowedImageFormats) {
-    if (!Object.values(AllowedImageFormats).includes(format)) throw new Error(`Invalid image format ${format}`);
-    return `${RouteBases.images}/${name}.${format}`;
   }
 }
 
 export interface ClientOptions {
   articleSymbolsLimit?: number
-}
-
-export enum AllowedImageFormats {
-  PNG = 'png',
-  JPG = 'jpg',
-  JPEG = 'jpeg',
-  GIF = 'gif'
 }

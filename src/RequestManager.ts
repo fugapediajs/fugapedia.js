@@ -1,6 +1,7 @@
 import fetch, { RequestInit } from 'node-fetch';
 import { HTTP } from './Constants';
 import { BaseResponse } from 'fugapedia-api-types/v1';
+import { resolveQuery } from './Util';
 
 export class RequestManager {
   #key: string | null = process.env.FUGAPEDIA_KEY ?? null;
@@ -34,19 +35,9 @@ export class RequestManager {
    */
   private resolveRequest(request: Request): [string, RequestInit] {
     if (!this.#key) throw new Error('You haven\'t set an API key');
-    let query: string;
-    if (request.query) {
-      request.query.append('key', this.#key);
-      request.query.append('ver', HTTP.version);
-      query = `?${request.query.toString()}`;
-    } else {
-      const q = new URLSearchParams();
-      q.append('key', this.#key);
-      q.append('ver', HTTP.version);
-      query = `?${q.toString()}`;
-    }
+    let query = resolveQuery({ key: this.#key, ver: HTTP.version }, request.query);
 
-    const url = `${HTTP.api}${request.route}${query}`;
+    const url = `${HTTP.api}${request.route}?${query}`;
 
     const requestInit: RequestInit = {
       method: request.method,
