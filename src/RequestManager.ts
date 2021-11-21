@@ -1,5 +1,6 @@
 import fetch, { RequestInit } from 'node-fetch';
 import { HTTP } from './Constants';
+import { BaseResponse } from 'fugapedia-api-types/v1';
 
 export class RequestManager {
   #key: string | null = process.env.FUGAPEDIA_KEY ?? null;
@@ -18,10 +19,10 @@ export class RequestManager {
    * @param {Request} request All the information needed to make a request
    * @returns 
    */
-  public async request<R>(request: Request) {
+  public async request<R extends BaseResponse>(request: Request) {
     const res = await fetch(...this.resolveRequest(request));
     if (!res.ok) throw new Error(`${res.status}: Failed to fetch`);
-    const json = await res.json() as R & { result: 'OK' | 'Error', message: string };
+    const json = await res.json() as R;
     if (json.result === 'Error') throw new Error(json.message);
     return json;
   }
@@ -56,14 +57,6 @@ export class RequestManager {
 }
 
 /**
- * Base response data from an route
- */
-export interface ResponseData {
-  result: 'OK' | 'Error'
-  message: 'Valid key' | 'Invalid key'
-}
-
-/**
  * Represents possible data to be given to an route
  */
  export interface RequestData {
@@ -87,13 +80,6 @@ export interface ResponseData {
  */
  export const enum RequestMethod {
   Get = 'get',
-}
-
-/**
- * Possible API routes
- */
-export const enum Route {
-  Article = '/article',
 }
 
 export type RouteLike = `/${string}`;

@@ -1,4 +1,5 @@
-import { Client, ResponseData } from '.';
+import { Client } from '.';
+import { RESTGetAPIArticleResponse } from 'fugapedia-api-types/v1';
 
 /**
  * An article on Fugapedia
@@ -8,7 +9,7 @@ export class Article {
   public article: string
   public articleContent: string
 
-  constructor(client: Client, data: ArticleRawData) {
+  constructor(client: Client, data: RESTGetAPIArticleResponse) {
     /**
      * The client that instantiated this
      * @type {Client}
@@ -28,9 +29,4 @@ export class Article {
      */
     this.articleContent = data.article_content;
   }
-}
-
-export interface ArticleRawData extends ResponseData {
-  article: string
-  article_content: string
 }
