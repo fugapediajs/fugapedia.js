@@ -17,7 +17,7 @@ npm i fugapedia.js
 ```
 yarn add fugapedia.js
 ```
-### pmpn
+### pnpm
 ```
 pnpm add fugapedia.js
 ```
