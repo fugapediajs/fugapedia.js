@@ -4,9 +4,9 @@
   <a href="https://www.npmjs.com/package/fugapedia.js"><img src="https://img.shields.io/npm/dt/fugapedia.js?color=FF6E1B&maxAge=3600" alt="npm downloads" /></a>
 </p>
 
-Node.js module to easily interact with Fugapedia API
+Node.js module to easily interact with the Fugapedia API
 
-[Fugapedia](https://fugapedia.xyz) supports only the Russian language, so that all information below will be in Russian.
+The [Fugapedia](https://fugapedia.xyz) supports only the Russian language, so that all information below will be in Russian.
 
 ## Установка
 ### npm
@@ -34,7 +34,8 @@ const main = async () => {
   console.log(article);
 
   const url = Fugapedia.makeImageUrl('Syjalo', 'jpeg');
-  console.log(url); 
+  console.log(url);
+  main();
 }
 ```
 ### TypeScript
