@@ -16,10 +16,6 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "import/order": [ "error", {
-            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-            "alphabetize": { "order": "asc" }
-        }],
         "array-callback-return": "error",
         "no-await-in-loop": "warn",
         "no-duplicate-imports": "error",
@@ -57,7 +53,8 @@
         "no-return-assign": "error",
         "no-return-await": "error",
         "no-sequences": "error",
-        "no-shadow": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
         "no-throw-literal": "error",
         "no-undef-init": "error",
         "no-unused-expressions": "error",

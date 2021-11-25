@@ -1,7 +1,7 @@
-import { DefaultOptions } from '.';
-import { REST } from './REST';
 import { APIArticleResponseType, RESTGetAPIArticleResponse, Routes } from 'fugapedia-api-types/v1';
 import { Article } from './Article';
+import { DefaultOptions } from '.';
+import { REST } from './REST';
 import { resolveQuery } from './Util';
 
 /**
@@ -38,7 +38,7 @@ export class Client {
    */
 
   /**
-   * 
+   * Returns the article by request
    * @param {string} id ID of an article that will be got
    * @param {GetArticleOptions} options Options for geting an article
    * @returns {Article}
