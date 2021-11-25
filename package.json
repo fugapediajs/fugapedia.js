@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/fugapediajs/fugapedia.js#readme",
   "dependencies": {
-    "fugapedia-api-types": "^0.0.5",
+    "fugapedia-api-types": "^0.0.6",
     "node-fetch": "^2.6.6"
   },
   "devDependencies": {

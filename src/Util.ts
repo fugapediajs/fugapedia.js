@@ -33,7 +33,7 @@ const AllowedImageFormats = ['png', 'jpg', 'jpeg', 'gif'];
  * @param {AllowedImageFormats} format Image format. Can be `png`, `jpg`, `jpeg` or `gif`
  * @returns {string}
  */
-export const makeImageUrl = (name: string, format: AllowedImageFormat) => {
+export const makeImageURL = (name: string, format: AllowedImageFormat) => {
   if (!AllowedImageFormats.includes(format)) throw new Error(`Invalid image format`);
   return `${RouteBases.images}/${name}.${format}`;
 };

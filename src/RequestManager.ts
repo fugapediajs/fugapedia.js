@@ -1,6 +1,6 @@
 import fetch, { RequestInit } from 'node-fetch';
-import { HTTP } from './Constants';
 import { BaseResponse } from 'fugapedia-api-types/v1';
+import { HTTP } from './Constants';
 import { resolveQuery } from './Util';
 
 export class RequestManager {
@@ -18,7 +18,7 @@ export class RequestManager {
   /**
    * Sends an request to the route
    * @param {Request} request All the information needed to make a request
-   * @returns 
+   * @returns {R extends BaseResponse}
    */
   public async request<R extends BaseResponse>(request: Request) {
     const res = await fetch(...this.resolveRequest(request));
@@ -35,7 +35,7 @@ export class RequestManager {
    */
   private resolveRequest(request: Request): [string, RequestInit] {
     if (!this.#key) throw new Error('You haven\'t set an API key');
-    let query = resolveQuery({ key: this.#key, ver: HTTP.version }, request.query);
+    const query = resolveQuery({ key: this.#key, ver: HTTP.version }, request.query);
 
     const url = `${HTTP.api}${request.route}?${query}`;
 
