@@ -45,8 +45,7 @@ main();
 ```
 ### TypeScript
 ```ts
-import { Client } from 'fugapedia.js';
-import { makeImageURL } from './Util';
+import { Client, makeImageURL } from 'fugapedia.js';
 
 const client = new Client().setKey('myAPIKey');
 
