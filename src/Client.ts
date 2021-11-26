@@ -45,10 +45,13 @@ export class Client {
    */
   public async getArticle(
     id: string,
-    options: { responseType?: APIArticleResponseType, limit?: number } = {},
+    options: { responseType?: APIArticleResponseType | keyof typeof APIArticleResponseType, limit?: number } = {},
   ) {
     const { responseType = APIArticleResponseType.Text, limit = this.options.articleSymbolsLimit } = options;
-    let query = resolveQuery({ article: id, type: responseType });
+    let type: number;
+    if (typeof responseType === 'number') type = responseType;
+    else type = APIArticleResponseType[responseType];
+    let query = resolveQuery({ article: id, type });
     if (limit) query = resolveQuery({ limit }, query);
     const data = await this.#rest.get<RESTGetAPIArticleResponse>(Routes.article(), query);
     return new Article(this, data);
