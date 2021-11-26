@@ -1,11 +1,16 @@
-# fugapedia.js
-<p align="center">
-  <a href="https://www.npmjs.com/package/fugapedia.js"><img src="https://img.shields.io/npm/v/fugapedia.js?color=FF6E1B&maxAge=3600" alt="npm version" /></a>
-  <a href="https://www.npmjs.com/package/fugapedia.js"><img src="https://img.shields.io/npm/dt/fugapedia.js?color=FF6E1B&maxAge=3600" alt="npm downloads" /></a>
-</p>
+<div align="center">
+  <p>
+    <a href="https://fugapedia.js.org"><img src="https://fugapedia.js.org/hero.png" width="555" alt="discord.js" /></a>
+  </p>
+  <p>
+    <a href="https://discord.gg/Phqaa4DVEK"><img src="https://img.shields.io/discord/911878509599817739?color=5865F2&logo=discord&logoColor=white&maxAge=3600" alt="Discord" /></a>
+    <a href="https://www.npmjs.com/package/fugapedia.js"><img src="https://img.shields.io/npm/v/fugapedia.js?&maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/fugapedia.js"><img src="https://img.shields.io/npm/dt/fugapedia.js?&maxAge=3600" alt="npm downloads" /></a>
+  </p>
+</div>
 
-Node.js module to easily interact with the Fugapedia API
-
+# Introduction
+Node.js module to easily interact with the Fugapedia API  
 The [Fugapedia](https://fugapedia.xyz) supports only the Russian language, so that all information below will be in Russian.
 
 ## Установка
